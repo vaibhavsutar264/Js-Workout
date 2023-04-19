@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hi</h1>
+    <script>
+        const string ="vaibhav sutar dfdf fgffr"
+        console.log(string);
+
+//         You have been given an array A = [19,23,10,20,50,71,1,3]. Write a function that returns this array in below mentioned sorting order. 
+//   
+// Output: [(Largest Number),(Smallest Number),(2nd Largest Number), (2nd Smallest Number)...so on] 
+    const arrayData  = [19,23,10,20,50,71,3,1]
+    let minValue
+    for (let i = 0; i < arrayData.length; i++) {
+       
+    }
+    const sortedArray = arrayData.sort((a,b)=>{
+        return a-b
+    })
+    console.log(sortedArray);
+    let values =[]
+    for (let i = 0; i < sortedArray.length; i++) {
+        const smallestValue = sortedArray[0]
+        const largestValue = sortedArray[sortedArray.length-1]
+        const concatedValue = values.concat(largestValue,smallestValue)
+      values.push(largestValue)   
+      values.push(smallestValue)   
+      arrayData.pop()
+      arrayData.shift()
+    }
+
+    console.log(values)
+
+
+    const arrayEven = [1,2,3,4,5,6,7,8,9,10]
+
+    const FilteredData = arrayEven.filter((item)=> item%2 == 0).reduce((acc,curr)=>{
+      return acc += curr
+    },0)
+
+    console.log("FilteredData",FilteredData);
+
+    //Write a function that takes in a string and returns the number of vowels (a, e, i, o, u) in the string.
+
+    const randomString = "aaeiouzzzzzzzzzzzzzzzzzzz"
+    const vowels = ["a","e","i","o","u"]
+    console.log(vowels.length);
+    console.log(randomString.length);
+     let totalVowels = 0
+      for (let i = 0; i < randomString.length; i++) {
+        if (randomString[i] == "a" || randomString[i] == "e" || randomString[i] == "i" || randomString[i] == "o" || randomString[i] == "u") {
+            totalVowels += 1
+        }
+      }
+
+      console.log("totalVowels",totalVowels);
+    //   console.log(vowels && vowels.every());
+
+
+    //Write a function that takes in a positive integer and returns true if it's a prime number, false otherwise.
+
+    let prime = true
+
+    function integerIsPrime(num){
+      for (let i = 2; i < num; i++) {
+       if(num%i == 0){
+        prime = false
+       }        
+      }
+      if(prime == true){
+        return "its a prime number"
+      }
+      prime = false
+    }
+    console.log("integerIsPrime",integerIsPrime(12));
+
+
+//Write a function that takes in two strings and returns true if they're anagrams of each other (contain the same letters in a different order), false otherwise.
+
+function anagramsCheck (string1, string2){
+    const sortedStringOne = string1.split("").sort().join("")
+    const sortedStringTwo = string2.split("").sort().join("")
+    if(sortedStringOne == sortedStringTwo){
+        return true
+    }
+}
+
+console.log("anagrams ", anagramsCheck("listen","silent"));
+
+
+//Write a function that takes in an array of strings and returns the longest string in the array.
+
+// const arrayOfStrings = ["vaibhav","jay","arun"]
+
+function largestString(arrayOfStrings){
+    let longestString = ""
+    let finalLargestString = ""
+for (let i = 0; i < arrayOfStrings.length; i++) {
+    if(arrayOfStrings[i].length >  longestString.length){
+        longestString = arrayOfStrings[i]
+    }
+}
+return longestString
+}
+
+console.log("largestString",largestString(["vaibhav","jay","dcdcdcdcdc"]) );
+
+
+//Write a function that takes in an array of integers and returns a new array with all the duplicates removed.
+
+function duplicatesCheck(dupArray){
+    let newArray = []
+    for (let i = 0; i < dupArray.length; i++) {
+        if (newArray.indexOf(dupArray[i]) == -1) {
+            newArray.push(dupArray[i])
+    }
+    }
+   return newArray.sort((a,b)=>{
+    return a-b
+   })
+}
+
+console.log("duplicatesCheck",duplicatesCheck([1,3,4,1,5,6,8,5,3,6,4,2,1,3]));
+
+
+//Write a function that takes in an array of integers and returns the product of all the numbers in the array.
+
+
+function productOfArrayCheck(productOfArray){
+    let newArray = 1
+    for (let i = 0; i < productOfArray.length; i++) {
+        newArray *= productOfArray[i]
+    }
+   return newArray
+}
+
+console.log("productOfArrayCheck",productOfArrayCheck([1,3,4]));
+
+
+//Write a function that takes in two arrays of integers and returns the median of the combined array. The median is defined as the middle value when the array is sorted. If the combined array has an even number of elements, the median is the average of the two middle values. For example, the median of [1, 3, 5] and [2, 4, 6] is 3.5.
+
+
+function medianCheck (Array1, Array2){
+    const midOfArrayOne = Array1[1]
+    const midOfArrayTwo = Array2[1]
+    const median = (midOfArrayOne + midOfArrayTwo)/2
+    return median
+}
+console.log("median ", medianCheck([1, 3, 5],[2, 4, 6]));
+
+
+
+//Write a function that takes in a string and returns the minimum number of edits (insertions, deletions, or replacements) required to transform the string into a palindrome.
+
+function editsCheck (value){
+    let count = 0
+    const reverseValue = value.split("").reverse().join("")
+    if (value == reverseValue) {
+        count +=1 
+        return count
+    }
+}
+console.log("edits ", editsCheck("wow"));
+
+
+//Write a function that takes in an array of integers and returns the minimum number of jumps required to reach the end of the array from the beginning. Each element in the array represents the maximum number of steps you can take from that position.
+
+function jumpsCheck (value){
+    let jumps = 0
+    for (let i = 0; i < value.length; i++) {
+       jumps +=1        
+    }
+    return jumps
+}
+console.log("jumps ", jumpsCheck([1,2,3,4,5,6,7,9,10]));
+
+
+//Write a function that takes in an array of integers and returns the maximum product of any three numbers in the array.
+
+function max3NumbersProductCheck (array){
+    const sortedArray = array.sort((a,b)=>{
+        return a-b
+    })
+    const productOfThree = sortedArray[sortedArray.length -2]*sortedArray[sortedArray.length -1]*sortedArray[sortedArray.length-1]
+    return sortedArray[sortedArray.length-1]
+}
+console.log("max3NumbersProduct ", max3NumbersProductCheck([1,10,3,4,12,6,7,9,11]));
+
+
+
+//find the missing odd number in below example array.length -1 is very important because it will keep on checking next till last element and next of last element which is current +2 is not present in an array but it satisfies !== to condition and output becomes 17 instead of 13
+function findMissingOddNumberCheck (array){
+    let missing = 0
+    for (let i = 0; i <( array.length - 1); i++) {
+       let current = array[i]     
+       let next = current+2   
+       if(array[i+1] !== next){
+          missing = next
+       }
+    }
+    return missing
+
+}
+console.log("findMissingOddNumber ", findMissingOddNumberCheck([5,7,9,11,15,17]));
+
+//output =13
+
+
+//find factorial of a number
+
+function factorialNumberCheck(num){
+    let factorial =1
+    for (let i = num; i > 0; i--) {
+         factorial = factorial*i
+    }
+    return factorial
+}
+console.log("factorialNumber ", factorialNumberCheck(5));
+
+
+
+//Write a function in JavaScript that takes in an array of integers and returns an array of all the unique pairs of integers that add up to a given sum.
+
+// Example input: findPairs([1, 2, 3, 4, 5, 6, 7], 8)
+// Example output: [[1, 7], [2, 6], [3, 5]]
+
+function findPairs(array,num){
+    let pairs =[]
+    for (let i = 0; i < array.length; i++) {
+        for (let j = 0; j < array.length; j++) {
+            if (array[i] !== array[j]) {
+                if (array[i] + array[j] == num) {
+                pairs.push(array[i],array[j])
+            }
+            }  
+        }
+    }
+    return pairs
+}
+console.log("findPairs ", findPairs([1, 2, 3, 4, 5, 6, 7], 8));
+
+//[1, 7, 2, 6, 3, 5, 5, 3, 6, 2, 7, 1]
+
+
+
+//Write a function in JavaScript that takes in a string and returns the longest substring without repeating characters.
+
+// Example input: findLongestSubstring("abcabcbb")
+// Example output: "abc"
+
+// Example input: findLongestSubstring("bbbbb")
+// Example output: "b"
+
+
+
+// function findlongest(string){
+//     let longest =[]
+//      for (let i = 0; i < string.length; i++) {
+//         let current = string[i] 
+//         for (let j = 0; j < string.length; j++) {
+//             if (string.charAt(string[j+1]) == current) {
+//             longest.push(string[i]) 
+//         }
+//         }
+//      }
+//     return longest
+// }
+// console.log("findlongest ", findlongest("abcabcbb"));
+
+
+//Write a function in JavaScript that takes in a string and returns the first non-repeating character in the string. If there are no non-repeating characters, the function should return null.
+
+// Example input: findFirstNonRepeatingChar("hello")
+// Example output: "h"
+
+
+// function findFirstNonRepeatingChar(str){
+//     let sample = []
+//     let nonRepeated = []
+//     for (let i = 0; i < str.length; i++) {
+//         let current = str[i]
+//         sample.push(str[i])
+//         for (let j = i+1; j < str.length; j++) {
+//             if (current !== str[j]) {
+//                 nonRepeated.push(current)
+//             }
+//         }
+//     }
+//     return nonRepeated
+// }
+// console.log("findFirstNonRepeatingChar ", findFirstNonRepeatingChar("abcdabcd"));
+
+function findFirstNonRepeatingChar(str) {
+  let count = {};
+  
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+    count[char] = (count[char] || 0) + 1;
+  }
+  
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+    if (count[char] === 1) {
+      return char;
+    }
+  }
+  
+  return null;
+}
+
+console.log("findFirstNonRepeatingChar ", findFirstNonRepeatingChar("hello"));
+
+
+
+
+function stringcheck(str) {
+    let repeat = ""
+  for (let i = 0; i < str.length; i++) {
+    for (let j = i+1; j < str.length; j++) {
+        if (str[i] === str[j]) {
+            repeat = str[j]
+        }
+    }
+  }
+  return repeat
+}
+
+console.log("stringcheck ", stringcheck("aaaaaallllo"));
+
+
+//Write a function in JavaScript that takes in an array of integers and returns the indices of two numbers that add up to a given target. If there are no such numbers, the function should return null.
+
+// Example input: findTwoSum([2, 7, 11, 15], 9)
+// Example output: [0, 1]
+
+// Example input: findTwoSum([3, 2, 4], 6)
+// Example output: [1, 2]
+
+// Example input: findTwoSum([3, 2, 4], 8)
+// Example output: null
+
+
+function findTwoSum(array, num) {
+    let twoNumberAddition = []
+  for (let i = 0; i < array.length; i++) {
+    for (let j = i+1; j < array.length; j++) {
+        if (array[i] + array[j] == num) {
+            twoNumberAddition.push(i , j)
+        }
+    }
+  }
+  return twoNumberAddition
+}
+
+console.log("findTwoSum ", findTwoSum([2, 7, 11, 15], 9));
+
+//findTwoSum   [0, 1]
+
+//Write a function in JavaScript that takes in a string and returns the length of the longest substring without repeating characters.
+
+// Example input: findLongestSubstring("abcabcbb")
+// Example output: 3
+
+// Example input: findLongestSubstring("pwwkew")
+// Example output: 3
+
+// Example input: findLongestSubstring("bbbbbb")
+// Example output: 1
+
+
+
+function findLongestSubstring(str) {
+    let repeat = ""
+    let count = 0
+    let maxcount = []
+  for (let i = 0; i < str.length; i++) {
+    for (let j = i+1; j < str.length; j++) {
+        if (str[i] === str[j]) {
+            count = count +1
+            repeat = str[j]
+        }
+    }
+    maxcount.push(count,repeat)
+    count = 0
+    repeat = ""
+  }
+const max = Math.max.apply(null, maxcount.filter((item)=> typeof item === 'number'))
+    // maxcount.findIndex(max)
+    function checkmax(item) {
+  return item = 3;
+}
+  return maxcount[maxcount.indexOf(max) +1]
+}
+
+console.log("findLongestSubstring ", findLongestSubstring("cfvfvfvfs"));
+
+
+
+
+// const arr1 = [1, 3, 5];
+// const arr2 = [2, 4, 6];
+// const mergedArr = mergeSortedArrays(arr1, arr2);
+// console.log(mergedArr); // [1, 2, 3, 4, 5, 6]
+
+
+
+
+function mergeSortedArrays(array1, array2) {
+    let data =  Array.prototype.concat(array1,array2).sort((a,b)=>{
+      return a-b
+    })
+    return data
+}
+
+console.log("mergeSortedArrays ", mergeSortedArrays([1, 3, 5],[2, 4, 6]))
+
+// const linkedList = new SinglyLinkedList();
+// linkedList.add(1);
+// linkedList.add(2);
+// linkedList.add(3);
+// const reversedList = reverseLinkedList(linkedList);
+// console.log(reversedList.toArray()); // [3, 2, 1]
+
+
+function reverseLinkedList(array1, array2) {
+    let data =  []
+    data.push(1,2,3)
+    return data.reverse()
+}
+
+console.log("reverseLinkedList ", reverseLinkedList([1, 3, 5],[2, 4, 6]))
+
+
+function findFirstNonRepeatedChar(str) {
+  let nonrepeated = []
+  let LengthOfNonRepeated = []
+    for (let i = 0; i < str.length; i++) {
+       for (let j = i+1; j < str.length; j++) {
+        if(str[i] !== str[j]){
+          nonrepeated.push(str[i])
+        }
+        
+       }     
+       LengthOfNonRepeated.push(nonrepeated.length,str[i])
+        nonrepeated = [] 
+    }
+    const maxRepeated =  Math.max.apply(null,LengthOfNonRepeated.filter(item => typeof item == "number"))
+    const indexOfMax = LengthOfNonRepeated.indexOf(maxRepeated)
+    return LengthOfNonRepeated[indexOfMax+1]
+}
+
+console.log("findFirstNonRepeatedChar ", findFirstNonRepeatedChar("hello"))
+//output h
+
+
+// Write a function that takes a string as input and returns the length of the longest substring without repeating characters.
+
+// console.log(findLongestSubstring("abcabcbb")); // 3 (the longest substring without repeating characters is "abc")
+// console.log(findLongestSubstring("bbbbbb")); // 1 (the longest substring without repeating characters is "b")
+// console.log(findLongestSubstring("pwwkew")); // 3 (the longest substring without repeating characters is "wke")
+
+// function findLongestSubstring(str) {
+ 
+// }
+
+// console.log("findLongestSubstring ", findLongestSubstring("abcabcbb"))
+
+const obj = {
+  name: "vaibhav",
+  age: 27,
+  designation : "developer"
+}
+
+const updateObject = {...obj,name: "varun"}
+
+console.log("updateObject",updateObject);
+
+const { name, ...rest} = obj
+
+console.log("rest",rest);
+
+
+
+
+//5431 => 5+4+3+1 = 13 =>1+3=4
+function eachnumberadd(num) {
+  const myString = num.toString()
+  let total = 0
+ for (let i = 0; i < myString.length; i++) {
+  total = total + Number(myString[i])
+ }
+ finalTotal = 0
+  if(total.toString().length>1){
+    const totalAfterIteration = total.toString()
+    for (let i = 0; i < totalAfterIteration.length; i++) {
+      finalTotal = finalTotal + Number(totalAfterIteration[i])
+    }
+  } else{
+    return total
+  }
+  return finalTotal
+}
+
+console.log("eachnumberadd ", eachnumberadd(5431))
+
+//object to array making
+function objectToArraycheck(person){
+const objectToArray = Object.keys(person).map((key)=>{
+  return {[key] : person[key]}
+})
+const finalArrayWithNoObj =[]
+for (let i = 0; i < objectToArray.length; i++) {
+  const objectToArray2 = Object.keys(objectToArray[i]).map((key)=>{
+  return {[key] : person[key]}
+})
+finalArrayWithNoObj.push(objectToArray2)
+
+}
+return finalArrayWithNoObj
+
+}
+console.log("objectToArray",objectToArraycheck({
+  name : "ram",
+  age : 30
+}));
+
+
+const objData = {
+  name: "varun",
+  age : 25
+}
+
+console.log("objData" ,Object.entries(objData));
+
+function obarr(objData){
+  const data = Object.keys(objData).map((item)=>{
+    return [item,objData[item]]
+  })
+  return data
+}
+
+console.log("obarr" ,obarr({
+  name: "varun",
+  age : 25
+}));
+
+
+// function checkHoisting(){
+//   if (1) {
+//     var a =5
+//     let b=6
+//     const c = 7
+//   }
+//   console.log(a);
+//   console.log(b);
+//   console.log(c);
+// }
+
+// checkHoisting()
+//over above after if statement console.log occur
+//output: 5
+//Uncaught ReferenceError: b is not defined
+
+
+// function checkHoisting(){
+//   if (0) {
+//     var a =5
+//     let b=6
+//     const c = 7
+//   }
+//   console.log(a);
+//   console.log(b);
+//   console.log(c);
+// }
+
+// checkHoisting()
+//over above before if statement console.log occur
+//output: undefined
+//Uncaught ReferenceError: b is not defined
+
+
+
+
+//find second == 2
+function finditem(objData){
+  const array = Object.keys(objData).map((key)=>{
+    return {
+      [key] : objData[key]
+    }
+  })
+  const data = array.map(item=>{
+    return [Object.keys(item)[0] ,item.second]
+  })
+  return data[1]
+}
+
+console.log("finditem" ,finditem({
+  "first": 1,
+  "second": 2
+}));
+
+//Question: Write a function that takes in a string and returns the most common character in the string. If there are multiple characters with the same frequency, return any one of them.
+
+// input const str = "hello world";
+// output l
+
+
+
+
+function findRepeated(str){
+  let count = 0
+  let data = []
+  for (let i = 0; i < str.length; i++) {
+      for (let j = i+1; j < str.length; j++) {
+         if (str[i] == str[j]) {
+          count++
+         }
+      }    
+      data.push(str[i],count)
+      count = 0
+  }
+  const dataOfInteger = data.filter((item)=> typeof item == "number")
+  const max = Math.max.apply(null,dataOfInteger)
+  const indexOfMax =  data.indexOf(max)
+  return data[indexOfMax - 1]
+}
+
+console.log("findRepeated" ,findRepeated("helloworld"));
+
+
+
+
+// Question: Write a function that takes in an array of integers and returns an array of the same length, where each element in the output array is the product of all the elements in the input array except for the element at that index. You cannot use division in your solution.
+
+// Example Input:
+// const arr = [1, 2, 3, 4, 5];
+// Example Output:
+// [120, 60, 40, 30, 24]
+// Explanation:
+
+// The element at index 0 in the input array is 1, so we need to find the product of all the other elements: 2 * 3 * 4 * 5 = 120
+// The element at index 1 in the input array is 2, so we need to find the product of all the other elements: 1 * 3 * 4 * 5 = 60
+
+
+
+function maxMultiplication(arr){
+  let maxMultiply = 1
+  let data = []
+  let duplicateArray = [...arr]
+  for (let i = 0; i < arr.length; i++) {
+    duplicateArray.splice(i,1)
+    for (let j = 0; j < duplicateArray.length; j++) {
+      maxMultiply = maxMultiply*duplicateArray[j]
+    }
+    data.push(maxMultiply)
+    duplicateArray = [...arr]
+    maxMultiply = 1
+  }
+  return data
+}
+
+console.log("maxMultiplication" ,maxMultiplication([1,2,3,4,5]));
+//maxMultiplication (5) [120, 60, 40, 30, 24]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </script>
+</body>
+
+</html>
