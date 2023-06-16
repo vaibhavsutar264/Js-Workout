@@ -9,27 +9,28 @@
 </head>
 <body>
     <h1>hi</h1>
+    <!-- <script> 
+    
+    
+    </script> -->
     <script>
         const string ="vaibhav sutar dfdf fgffr"
         console.log(string);
 
-//         You have been given an array A = [19,23,10,20,50,71,1,3]. Write a function that returns this array in below mentioned sorting order. 
+//You have been given an array A = [19,23,10,20,50,71,1,3]. Write a function that returns this array in below mentioned sorting order. 
 //   
 // Output: [(Largest Number),(Smallest Number),(2nd Largest Number), (2nd Smallest Number)...so on] 
     const arrayData  = [19,23,10,20,50,71,3,1]
     let minValue
-    for (let i = 0; i < arrayData.length; i++) {
-       
-    }
     const sortedArray = arrayData.sort((a,b)=>{
-        return a-b
+      return a-b
     })
     console.log(sortedArray);
     let values =[]
     for (let i = 0; i < sortedArray.length; i++) {
         const smallestValue = sortedArray[0]
         const largestValue = sortedArray[sortedArray.length-1]
-        const concatedValue = values.concat(largestValue,smallestValue)
+        // const concatedValue = values.concat(largestValue,smallestValue)
       values.push(largestValue)   
       values.push(smallestValue)   
       arrayData.pop()
@@ -101,7 +102,6 @@ console.log("anagrams ", anagramsCheck("listen","silent"));
 
 function largestString(arrayOfStrings){
     let longestString = ""
-    let finalLargestString = ""
 for (let i = 0; i < arrayOfStrings.length; i++) {
     if(arrayOfStrings[i].length >  longestString.length){
         longestString = arrayOfStrings[i]
@@ -159,7 +159,7 @@ console.log("median ", medianCheck([1, 3, 5],[2, 4, 6]));
 
 //Write a function that takes in a string and returns the minimum number of edits (insertions, deletions, or replacements) required to transform the string into a palindrome.
 
-function editsCheck (value){
+function editsCheck(value){
     let count = 0
     const reverseValue = value.split("").reverse().join("")
     if (value == reverseValue) {
@@ -188,25 +188,24 @@ function max3NumbersProductCheck (array){
     const sortedArray = array.sort((a,b)=>{
         return a-b
     })
-    const productOfThree = sortedArray[sortedArray.length -2]*sortedArray[sortedArray.length -1]*sortedArray[sortedArray.length-1]
-    return sortedArray[sortedArray.length-1]
+    const productOfThree = sortedArray[sortedArray.length -3]*sortedArray[sortedArray.length -2]*sortedArray[sortedArray.length-1]
+    return productOfThree
 }
 console.log("max3NumbersProduct ", max3NumbersProductCheck([1,10,3,4,12,6,7,9,11]));
 
 
 
 //find the missing odd number in below example array.length -1 is very important because it will keep on checking next till last element and next of last element which is current +2 is not present in an array but it satisfies !== to condition and output becomes 17 instead of 13
-function findMissingOddNumberCheck (array){
-    let missing = 0
-    for (let i = 0; i <( array.length - 1); i++) {
-       let current = array[i]     
-       let next = current+2   
-       if(array[i+1] !== next){
-          missing = next
-       }
-    }
-    return missing
-
+function findMissingOddNumberCheck(array) {
+  missingNumber = []
+  for (let i = 0; i < array.length; i++) {
+      let current = array[i]  
+      let next = current + 2 
+      if(array[i+1] !== next){
+          missingNumber.push(next)
+      }
+  }
+  return missingNumber[0]
 }
 console.log("findMissingOddNumber ", findMissingOddNumberCheck([5,7,9,11,15,17]));
 
@@ -215,12 +214,13 @@ console.log("findMissingOddNumber ", findMissingOddNumberCheck([5,7,9,11,15,17])
 
 //find factorial of a number
 
-function factorialNumberCheck(num){
-    let factorial =1
-    for (let i = num; i > 0; i--) {
-         factorial = factorial*i
-    }
-    return factorial
+function factorialNumberCheck(num) {
+  let factorial = 1
+
+  for (let i = num; i > 0; i--) {
+      factorial =  factorial*i   
+  }
+  return factorial
 }
 console.log("factorialNumber ", factorialNumberCheck(5));
 
@@ -231,18 +231,16 @@ console.log("factorialNumber ", factorialNumberCheck(5));
 // Example input: findPairs([1, 2, 3, 4, 5, 6, 7], 8)
 // Example output: [[1, 7], [2, 6], [3, 5]]
 
-function findPairs(array,num){
-    let pairs =[]
-    for (let i = 0; i < array.length; i++) {
-        for (let j = 0; j < array.length; j++) {
-            if (array[i] !== array[j]) {
-                if (array[i] + array[j] == num) {
-                pairs.push(array[i],array[j])
-            }
-            }  
+function findPairs(arr,num) {
+  let pairs = []
+  for (let i = 0; i < arr.length; i++) {
+      for (let j = i+1; j < arr.length; j++) {
+        if (arr[i] + arr[j] == num) {
+          pairs.push(arr[i],arr[j])
         }
-    }
-    return pairs
+      }    
+  }
+  return pairs
 }
 console.log("findPairs ", findPairs([1, 2, 3, 4, 5, 6, 7], 8));
 
@@ -376,27 +374,43 @@ console.log("findTwoSum ", findTwoSum([2, 7, 11, 15], 9));
 
 
 
+// function findLongestSubstring(str) {
+//     let repeat = ""
+//     let count = 0
+//     let maxcount = []
+//   for (let i = 0; i < str.length; i++) {
+//     for (let j = i+1; j < str.length; j++) {
+//         if (str[i] === str[j]) {
+//             count = count +1
+//             repeat = str[j]
+//         }
+//     }
+//     maxcount.push(count,repeat)
+//     count = 0
+//     repeat = ""
+//   }
+// const max = Math.max.apply(null, maxcount.filter((item)=> typeof item === 'number'))
+//   return maxcount[maxcount.indexOf(max) +1]
+// }
+
 function findLongestSubstring(str) {
-    let repeat = ""
-    let count = 0
-    let maxcount = []
+  let count = 0
+  let lomgestValue = []
   for (let i = 0; i < str.length; i++) {
-    for (let j = i+1; j < str.length; j++) {
-        if (str[i] === str[j]) {
-            count = count +1
-            repeat = str[j]
-        }
-    }
-    maxcount.push(count,repeat)
-    count = 0
-    repeat = ""
+       for (let j = i+1; j < str.length; j++) {
+           if (str[i] == str[j]) {
+               count++
+               lomgestValue.push(str[i],count)
+           }        
+       }  
+       count = 0  
   }
-const max = Math.max.apply(null, maxcount.filter((item)=> typeof item === 'number'))
-    // maxcount.findIndex(max)
-    function checkmax(item) {
-  return item = 3;
-}
-  return maxcount[maxcount.indexOf(max) +1]
+  const filteredLongestNumberData = lomgestValue.filter((item)=>{
+    return typeof item == "number"
+  })
+  const max = Math.max.apply(null,filteredLongestNumberData)
+  const maxValueIndex = lomgestValue.indexOf(max)
+  return lomgestValue[maxValueIndex-1]
 }
 
 console.log("findLongestSubstring ", findLongestSubstring("cfvfvfvfs"));
@@ -429,13 +443,13 @@ console.log("mergeSortedArrays ", mergeSortedArrays([1, 3, 5],[2, 4, 6]))
 // console.log(reversedList.toArray()); // [3, 2, 1]
 
 
-function reverseLinkedList(array1, array2) {
+function reverseLinkedList() {
     let data =  []
     data.push(1,2,3)
     return data.reverse()
 }
 
-console.log("reverseLinkedList ", reverseLinkedList([1, 3, 5],[2, 4, 6]))
+console.log("reverseLinkedList ", reverseLinkedList())
 
 
 function findFirstNonRepeatedChar(str) {
@@ -477,6 +491,7 @@ const obj = {
   age: 27,
   designation : "developer"
 }
+
 
 const updateObject = {...obj,name: "varun"}
 
@@ -606,6 +621,16 @@ console.log("finditem" ,finditem({
   "second": 2
 }));
 
+
+function finditem2(objData) {
+  return Object.entries(objData)[1];
+}
+
+console.log("finditem2", finditem2({
+  "first": 1,
+  "second": 2
+}));
+
 //Question: Write a function that takes in a string and returns the most common character in the string. If there are multiple characters with the same frequency, return any one of them.
 
 // input const str = "hello world";
@@ -671,29 +696,130 @@ console.log("maxMultiplication" ,maxMultiplication([1,2,3,4,5]));
 
 
 
+//Problem statement: Write a function that takes an array of integers and returns the sum of all even numbers in the array.
 
 
 
 
+function sumOfAllEven(arr){
+  let sum = 0
+  let filtered = arr.filter(item => item%2 === 0)
+  console.log(filtered);
+  // filtered.map((item,index)=>{
+  //   sum = sum + filtered[index]
+  // })
+  for (let i = 0; i < filtered.length; i++) {
+        sum += filtered[i]
+  }
+  console.log(sum);
+  return sum
+}
+
+console.log("sumOfAllEven" ,sumOfAllEven([1,2,3,4,5]));
+// 6
+
+// Problem statement: Write a function that takes an array of objects representing books and returns a new array of book titles sorted in alphabetical order.
+
+
+function booksObject(arr){
+  let sum = 0
+  let filtered = arr.map(item => {return {title : item.title}})
+  //here instead of map if you use filter then you cannot get desired output
+  // console.log(filtered);
+  // // filtered.map((item,index)=>{
+  // //   sum = sum + filtered[index]
+  // // })
+  // for (let i = 0; i < filtered.length; i++) {
+  //       sum += filtered[i]
+  // }
+  // console.log(sum);
+  return filtered
+}
+
+console.log("booksObject" ,booksObject([{
+  author: "dcdc",
+  title : "sattva connect"
+},{
+  author: "dcdc",
+  title : "tclcpaas"
+},{
+  author: "dcdc",
+  title : "wear city"
+},{
+  author: "dcdc",
+  title : "haystack"
+},{
+  author: "dcdc",
+  title : "one touch"
+},{
+  author: "dcdc",
+  title : "quick mobile"
+}]));
 
 
 
 
+//Problem:
+// Write a function that takes in a string and returns the frequency of each character in the string. The function should return an object where the keys are the characters and the values are the frequency of each character in the input string.
+
+//Example:
+// Input: "hello"
+// Output: {h: 1, e: 1, l: 2, o: 1}
+
+function stringFreqCheck(str){
+  let count = 0
+  let data = []
+  for (let i = 0; i < str.length; i++) {
+      for (let j = i+1; j < str.length; j++) {
+         if (str[i] == str[j]) {
+          count++
+         }
+      }    
+      data.push(str[i],count)
+      count = 0
+  }
+  // const dataOfInteger = data.filter((item)=> typeof item == "number")
+  // const max = Math.max.apply(null,dataOfInteger)
+  // const indexOfMax =  data.indexOf(max)
+  return data
+}
+
+console.log("stringFreqCheck" ,stringFreqCheck("hello"));
 
 
 
+ function checkpalindrome(str){
+  let reversed = []
+  str.split("").reverse().join("")
+    for (let index = str.length; index >= 0; index--) {
+      reversed.push(str[index])
+    }
+
+    return reversed
+ }
 
 
+ console.log("palindrome",checkpalindrome("wow"))
 
 
+ let objectData = {
+  name2 : "vaibhav",
+  age : 27
+ }
 
+ const shallowCopy = objectData
 
+//  shallowCopy.name = "varun"
+//  console.log("shallowCopy",shallowCopy)
+//  console.log("objectData",objectData)
+const deepCopy = {...objectData}
+deepCopy.name2 = "amar"
 
+console.log("deepCopy",deepCopy)
+console.log("objectData",objectData)
 
-
-
-
-
+const {name2, ...rest2} = objectData
+console.log(rest2);
 
 
 
